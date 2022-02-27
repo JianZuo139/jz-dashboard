@@ -182,35 +182,71 @@ Friday: [
 };
 
 function addTimeSlot (day){
-    if (day === "Monday") {
-        timetable.Monday -[
-            ...timetable.Monday,
-            {name:"??",period: 1, style:""},
-        ];
-    }else if (day === "Tuesday"){
-        timetable.Tuesday -[
-            ...timetable.Tuesday,
-            {name:"??",period: 1, style:""},
-        ];
-    }else if (day === "Wednesday") {
-        timetable.Wednesday -[
-            ...timetable.Wednesday,
-            {name:"??",period: 1, style:""},
-        ];
-    }else if (day === "Thursday") {
-        timetable.Thursday -[
-            ...timetable.Thursay,
-            {name:"??",period: 1, style:""},
-        ];
-    }else if (day === "Friday") {
-        timetable.Friday -[
-            ...timetable.Friday,
-            {name:"??",period: 1, style:""},
-        ];
-    }
+    function addTimeSlot(day) {
+	if (day === "Monday") {
+  	timetable.Monday = [
+    	...timetable.Monday,
+    	{ name: "??", period: 1, style: "" },
+  	];
+	} else if (day === "Tuesday") {
+  	timetable.Tuesday = [
+    	...timetable.Tuesday,
+    	{ name: "??", period: 1, style: "" },
+  	];
+	} else if (day === "Wednesday") {
+  	timetable.Wednesday = [
+    	...timetable.Wednesday,
+    	{ name: "??", period: 1, style: "" },
+  	];
+	} else if (day === "Thursday") {
+  	timetable.Thursday = [
+    	...timetable.Thursday,
+    	{ name: "??", period: 1, style: "" },
+  	];
+	} else if (day === "Friday") {
+  	timetable.Friday = [
+    	...timetable.Friday,
+    	{ name: "??", period: 1, style: "" },
+  	];
+	}
+  }
+
 }
 
-
+let curDay;
+let curIndex;
+let curName;
+let curPeriod;
+let curStyle;
+function showCurData(day, index, name, period, style){
+    curDay = day;
+    curIndex = index;
+    curName = name;
+    curPeriod = period;
+    curStyle = style
+}
+function deleteTimeSlot(day, index){
+    if (day === "Monday") {
+  	timetable.Monday.splice(index, 1);
+  	timetable = timetable;
+	}
+    else if (day === "Tuesday") {
+  	timetable.Tuesday.splice(index, 1);
+  	timetable = timetable;
+	}
+    else if (day === "Wednesday") {
+  	timetable.Wednesday.splice(index, 1);
+  	timetable = timetable;
+	}
+    else if (day === "Thursday") {
+  	timetable.Thursday.splice(index, 1);
+  	timetable = timetable;
+	}
+    else if (day === "Friday") {
+  	timetable.Friday.splice(index, 1);
+  	timetable = timetable;
+	}
+}
 
 </script>
 
@@ -235,9 +271,17 @@ function addTimeSlot (day){
 <tbody>
 <tr>
 <th  class="table-dark" scope="row">Monday</th>
-{#each timetable.Monday as timeSlot}
+{#each timetable.Monday as timeSlot, index}
 <td colspan= {timeSlot.period} class={timeSlot.style}>
-<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#EditModal">
+<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#EditModal" on:click={() =>
+    showCurData(
+      "Monday",
+      index,
+      timeSlot.name,
+      timeSlot.period,
+      timeSlot.style
+    )}
+>
     {timeSlot.name}
 </button>
 </td>
@@ -246,9 +290,17 @@ function addTimeSlot (day){
 </tr>
 <tr>
 <th  class="table-dark" scope="row">Tuesday</th>
-{#each timetable.Tuesday as timeSlot}
+{#each timetable.Tuesday as timeSlot, index}
 <td colspan= {timeSlot.period} class={timeSlot.style}>
-<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#EditModal">
+<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#EditModal" on:click={() =>
+    showCurData(
+      "Tuesday",
+      index,
+      timeSlot.name,
+      timeSlot.period,
+      timeSlot.style
+    )}
+>
     {timeSlot.name}
 </button>
 </td>
@@ -257,9 +309,17 @@ function addTimeSlot (day){
 </tr>
 <tr>
 <th  class="table-dark" scope="row">Wednesday</th>
-{#each timetable.Wednesday as timeSlot}
+{#each timetable.Wednesday as timeSlot, index}
 <td colspan= {timeSlot.period} class={timeSlot.style}>
-<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#EditModal">
+<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#EditModal"on:click={() =>
+    showCurData(
+      "Wednesday",
+      index,
+      timeSlot.name,
+      timeSlot.period,
+      timeSlot.style
+    )}
+>
     {timeSlot.name}
 </button>
 </td>
@@ -268,9 +328,17 @@ function addTimeSlot (day){
 </tr>
 <tr>
 <th  class="table-dark" scope="row">Thursday</th>
-{#each timetable.Thursday as timeSlot}
+{#each timetable.Thursday as timeSlot, index}
 <td colspan= {timeSlot.period} class={timeSlot.style}>
-<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#EditModal">
+<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#EditModal" on:click={() =>
+    showCurData(
+      "Thursday",
+      index,
+      timeSlot.name,
+      timeSlot.period,
+      timeSlot.style
+    )}
+>
     {timeSlot.name}
 </button>
 </td>
@@ -279,9 +347,17 @@ function addTimeSlot (day){
 </tr>
 <tr>
 <th  class="table-dark" scope="row">Friday</th>
-{#each timetable.Friday as timeSlot}
+{#each timetable.Friday as timeSlot, index}
 <td colspan= {timeSlot.period} class={timeSlot.style}>
-<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#EditModal">
+<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#EditModal"on:click={() =>
+    showCurData(
+      "Friday",
+      index,
+      timeSlot.name,
+      timeSlot.period,
+      timeSlot.style
+    )}
+>
     {timeSlot.name}
 </button>
 </td>
@@ -307,15 +383,15 @@ function addTimeSlot (day){
         <div class="modal-body">
             <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" bind:value={curName}>
               </div>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Period</span>
-                <input type="number" class="form-control">
+                <input type="number" class="form-control" bind:value={curPeriod}>
               </div>
               <div class="input-group mb-3">
                 <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                <select class="form-select" id="inputGroupSelect01">
+                <select class="form-select" id="inputGroupSelect01" bind:value={curStyle}>
                   <option value="">Default</option>
                   <option value="table-primary">Blue</option>
                   <option value="table-success">Green</option>
@@ -327,7 +403,8 @@ function addTimeSlot (day){
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-danger">Delete</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" on:click={() => deleteTimeSlot(curDay, curIndex)}>Delete</button>
+
           <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
