@@ -441,7 +441,7 @@ getEntries();
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal" on:click={() => deleteTimeSlot(curDay, curIndex)}>Delete</button>
 
-          <button type="button" class="btn btn-primary" on:click={() => setTimeSlot(curDay, curIndex, curName, curPeriod, curStyle)}>Save changes</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" on:click={() => setTimeSlot(curDay, curIndex, curName, curPeriod, curStyle)}>Save changes</button>
         </div>
       </div>
     </div>
