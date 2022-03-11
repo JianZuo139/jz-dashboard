@@ -8,16 +8,189 @@ async function logout() {
     if (error) alert(error.message); // alert if error
 }
 
+// let timetable = {
+// 	Monday: [],
+// 	Tuesday: [],
+// 	Wednesday: [],
+// 	Thursday: [],
+// 	Friday: [],
+//   };
+
 let timetable = {
-	Monday: [],
-	Tuesday: [],
-	Wednesday: [],
-	Thursday: [],
-	Friday: [],
+	Monday: [
+  	{
+    	name: "PH",
+    	period: 1,
+    	style: "",
+  	},
+  	{
+    	name: "PM",
+    	period: 1,
+    	style: "",
+  	},
+  	{
+    	name: "BI",
+    	period: 2,
+    	style: "",
+  	},
+  	{
+    	name: "R",
+    	period: 1,
+    	style: "table-success",
+  	},
+  	{
+    	name: "BM",
+    	period: 2,
+    	style: "",
+  	},
+  	{
+    	name: "M3",
+    	period: 2,
+    	style: "",
+  	},
+  	{
+    	name: "BC",
+    	period: 2,
+    	style: "",
+  	},
+	],
+	Tuesday: [
+  	{
+    	name: "PJPK",
+    	period: 1,
+    	style: "",
+  	},
+  	{
+    	name: "M3",
+    	period: 2,
+    	style: "",
+  	},
+  	{
+    	name: "BI",
+    	period: 1,
+    	style: "",
+  	},
+  	{
+    	name: "E",
+    	period: 1,
+    	style: "table-success",
+  	},
+  	{
+    	name: "BM",
+    	period: 2,
+    	style: "",
+  	},
+  	{
+    	name: "BC",
+    	period: 3,
+    	style: "",
+  	},
+  	{
+    	name: "PJPK",
+    	period: 1,
+    	style: "",
+  	},
+	],
+	Wednesday: [
+  	{
+    	name: "BC",
+    	period: 3,
+    	style: "",
+  	},
+  	{
+    	name: "PM",
+    	period: 1,
+    	style: "",
+  	},
+  	{
+    	name: "H",
+    	period: 1,
+    	style: "table-success",
+  	},
+  	{
+    	name: "PKS",
+    	period: 3,
+    	style: "",
+  	},
+  	{
+    	name: "BM",
+    	period: 2,
+    	style: "",
+  	},
+	],
+	Thursday: [
+  	{
+    	name: "SA",
+    	period: 1,
+    	style: "",
+  	},
+  	{
+    	name: "PJPK",
+    	period: 1,
+    	style: "",
+  	},
+  	{
+    	name: "BM",
+    	period: 2,
+    	style: "",
+  	},
+  	{
+    	name: "A",
+    	period: 1,
+    	style: "table-success",
+  	},
+  	{
+    	name: "PM",
+    	period: 1,
+    	style: "",
+  	},
+  	{
+    	name: "BC",
+    	period: 2,
+    	style: "",
+  	},
+  	{
+    	name: "M3",
+    	period: 2,
+    	style: "",
+  	},
+	],
+	Friday: [
+  	{
+    	name: "BI",
+    	period: 2,
+    	style: "",
+  	},
+  	{
+    	name: "BM",
+    	period: 2,
+    	style: "",
+  	},
+  	{
+    	name: "T",
+    	period: 1,
+    	style: "table-success",
+  	},
+  	{
+    	name: "BC",
+    	period: 2,
+    	style: "",
+  	},
+  	{
+    	name: "PM",
+    	period: 1,
+    	style: "",
+  	},
+  	{
+    	name: "SA",
+    	period: 2,
+    	style: "",
+  	},
+	],
   };
 
+
 function addTimeSlot (day){
-    function addTimeSlot(day) {
 	if (day === "Monday") {
   	timetable.Monday = [
     	...timetable.Monday,
@@ -46,7 +219,7 @@ function addTimeSlot (day){
 	}
   }
 
-}
+
 
 let curDay;
 let curIndex;
@@ -233,13 +406,10 @@ getEntries();
 </tbody>
 </table>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Edit Time Slot
-  </button>
+
   
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -271,7 +441,7 @@ getEntries();
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal" on:click={() => deleteTimeSlot(curDay, curIndex)}>Delete</button>
 
-          <button type="button" class="btn btn-primary" on:click={() => setTimeSlot(curDay, curIndex)}>Save changes</button>
+          <button type="button" class="btn btn-primary" on:click={() => setTimeSlot(curDay, curIndex, curName, curPeriod, curStyle)}>Save changes</button>
         </div>
       </div>
     </div>
